@@ -16,6 +16,24 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post "/posts" do
+    post= Post.create(
+      image: params[:image],
+      caption: params[:caption],
+      likes: params[:likes],
+      user_id: params[:user_id]
+    )
+    if post.id
+      post.to_json(include: :user)
+    else
+      post.errors.full_messages.to_sentence
+      {errors: post.errors.full_messages.to_sentence}.to_json
+    end
+  end
+
+
+    
+
   def serialized_user
     @users.to_json(include: :posts)
   end
