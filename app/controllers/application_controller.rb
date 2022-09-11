@@ -63,6 +63,20 @@ class ApplicationController < Sinatra::Base
     @post.to_json
   end
 
+  get "/posts" do
+
+    Post.all.to_json(include: :user )
+    end
+  
+    get "/posts/:id" do
+      post = Post.find_by(id: params[:id])
+     if post
+        post.to_json(include: :user)
+      else
+        {errors: "Record not found with id #{params['id']}"}.to_json
+      end
+    end
+
 
     
 
