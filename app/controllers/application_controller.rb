@@ -40,6 +40,17 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  patch "/users/:id" do
+    @user = User.find_by_id(params[:id])
+    if @user && @user.update(params)
+      serialized_user
+    elsif !@user
+      {errors: "Record not found with id #{params['id']}"}.to_json
+    else
+      {errors: @user.errors.full_messages.to_sentence}.to_json
+    end
+  end
+
 
     
 
