@@ -12,9 +12,8 @@ test:
   database: db/test.sqlite3
 
 production:
- adapter: postgresql
-encoding: unicode
-database: production
-host: <%= ENV['DATABASE_HOST'] %>
- pool: 5
-
+  adapter: postgresql
+  encoding: unicode
+  database: production
+  host: <%= ENV['DATABASE_HOST'] %>
+  pool: 5

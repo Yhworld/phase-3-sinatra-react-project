@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+ruby "2.7.4"
 
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
@@ -11,8 +12,6 @@ gem "thin", "~> 1.8"
 # Rack middleware. Used specifically for parsing the request body into params.
 # https://github.com/rack/rack-contrib
 gem "rack-contrib", "~> 2.3"
-
-gem 'bcrypt'
 
 # More Rack middleware! Used to handle CORS requests
 # https://github.com/cyu/rack-cors
@@ -55,7 +54,5 @@ end
 
 group :production do
   gem 'pg', '~> 1.4', '>= 1.4.3'
-  ruby "2.7.4"
-gem 'sinatra-contrib', '~> 2.2', '>= 2.2.2',require: false
+  gem 'sinatra-contrib', '~> 2.2', '>= 2.2.2',require: false
 end
-
